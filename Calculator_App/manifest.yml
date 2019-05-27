@@ -1,0 +1,9 @@
+---
+applications:
+  - name: cf-demo
+    path: target\Calculator_App-0.0.1-SNAPSHOT.jar
+    memory: 512M
+    instances: 1
+    random-route: true
+    buildpacks:
+      - https://github.com/cloudfoundry/java-buildpack.git
