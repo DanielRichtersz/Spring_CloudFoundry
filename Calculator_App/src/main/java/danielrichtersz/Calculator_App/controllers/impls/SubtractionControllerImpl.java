@@ -2,7 +2,7 @@ package danielrichtersz.Calculator_App.controllers.impls;
 
 import danielrichtersz.Calculator_App.CalculatorAppApplication;
 import danielrichtersz.Calculator_App.controllers.interfaces.CalculatorController;
-import danielrichtersz.Calculator_App.services.interfaces.ParsingService;
+import danielrichtersz.Calculator_App.services.interfaces.CalculatorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 public class SubtractionControllerImpl implements CalculatorController {
 
     @Autowired
-    public ParsingService parsingService;
+    public CalculatorService calculatorService;
 
     @GetMapping("{client}/hello")
     @Override
@@ -29,15 +29,8 @@ public class SubtractionControllerImpl implements CalculatorController {
     @PostMapping("/calculate")
     @Override
     public ResponseEntity calculate(
-            @RequestParam(value = "sumString") String sumString) {
-        String answer = this.parsingService.saveSum(sumString);
-        if (answer != null) {
-            //Success
-
-
-            return ResponseEntity.status(HttpStatus.OK).body("Answer: " + answer);
-        }
-        //Failure
-        return ResponseEntity.status(HttpStatus.OK).body("Sum could not be parsed, please check for invalid characters");
+            @RequestParam(value = "calculation") String calculation) {
+        double result = this.calculatorService.calculate(calculation);
+        return ResponseEntity.status(HttpStatus.OK).body(result);
     }
 }
