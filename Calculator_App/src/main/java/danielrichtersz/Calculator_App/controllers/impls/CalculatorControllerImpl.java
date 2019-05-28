@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/api")
-public class SubtractionControllerImpl implements CalculatorController {
+public class CalculatorControllerImpl implements CalculatorController {
 
     @Autowired
     public CalculatorService calculatorService;
