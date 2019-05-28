@@ -18,10 +18,23 @@ public class DividerControllerImpl implements DividerController {
     @GetMapping("/calculate/{a}/{b}")
     @Override
     public ResponseEntity calculate(
-            @PathVariable(value = "a") double a,
-            @PathVariable(value = "b") double b) {
-        double result = this.dividerService.calculate(a, b);
+            @PathVariable(value = "a") String a,
+            @PathVariable(value = "b") String b) {
 
+        double dA;
+        double dB;
+
+        try {
+            dA = Double.parseDouble(a);
+            dB = Double.parseDouble(b);
+        }
+        catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body("Path paramters did not match doubles. " +
+                    "For decimals, please use this a 'dot' as divider and not a 'comma'. " +
+                    "Example: 3.14");
+        }
+
+        double result = this.dividerService.calculate(dA, dB);
         return ResponseEntity.status(HttpStatus.OK).body(result);
     }
 }

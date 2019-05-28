@@ -2,6 +2,7 @@ package danielrichtersz.Calculator_App.services.impl;
 
 import danielrichtersz.Calculator_App.models.calculations.Calculation;
 import danielrichtersz.Calculator_App.models.calculations.DivideCalculation;
+import danielrichtersz.Calculator_App.models.calculations.DivideCalculationREST;
 import danielrichtersz.Calculator_App.models.calculations.MultiplyCalculation;
 import danielrichtersz.Calculator_App.services.interfaces.CalculatorService;
 import org.springframework.stereotype.Service;
@@ -14,7 +15,7 @@ public class CalculatorServiceImpl implements CalculatorService {
 
     Map<String, Calculation> calculationMap = new HashMap<String, Calculation>() {{
        put("*", new MultiplyCalculation());
-       put("/", new DivideCalculation());
+       put("/", new DivideCalculationREST());
     }};
 
     public double calculate(String calculation) {

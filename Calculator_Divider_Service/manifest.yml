@@ -2,7 +2,7 @@
 applications:
   - name: cf-demo-divider
     path: target\Calculator_Divider_Service-0.0.1-SNAPSHOT.jar
-    memory: 512M
+    memory: 768M
     instances: 1
     random-route: true
     buildpacks:
