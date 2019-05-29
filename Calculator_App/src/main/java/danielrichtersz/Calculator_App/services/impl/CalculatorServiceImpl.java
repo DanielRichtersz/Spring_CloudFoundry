@@ -15,11 +15,14 @@ public class CalculatorServiceImpl implements CalculatorService {
 
     Map<String, Calculation> calculationMap = new HashMap<String, Calculation>() {{
        put("*", new MultiplyCalculation());
+       //Create for REST implementation
+       //put("*", new MultiplyRestCalculation());
        put("/", new DivideCalculationREST());
+       //put("/", new DivideCalculation());
     }};
 
-    public double calculate(String calculation) {
 
+    public double calculate(String calculation) {
         String type = this.getTypeOfCalculation(calculation);
         return this.tryCalculation(calculation, type);
     }

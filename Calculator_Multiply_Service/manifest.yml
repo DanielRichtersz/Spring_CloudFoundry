@@ -1,0 +1,9 @@
+---
+applications:
+  - name: cf-demo-multiplier
+    path: target\Calculator_Multiply_Service-0.0.1-SNAPSHOT.jar
+    memory: 768M
+    instances: 1
+    random-route: true
+    buildpacks:
+      - https://github.com/cloudfoundry/java-buildpack.git
